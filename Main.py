@@ -30,7 +30,7 @@ def index():
 @app.route("/data", methods=["POST"])
 def data():
     form_data = request.form
-    print(form_data["Sender_email"])
+    # print(form_data["Sender_email"])
 
     print(form_data)
     check(form_data)
@@ -40,8 +40,8 @@ def send_mail(data):
     msg = Message("Grab your product",
                 sender=data["Sender_email"], 
                   recipients=[data["Reciever_email"]])
-
-    msg.body = "Hurry UP!, Your product is available at the price you want"
+    pdt = data["link"]
+    msg.body = "Hurry UP, Your product  " + pdt + " is available at the price you want"
     mail.send(msg)
 
 def check_price(data):
